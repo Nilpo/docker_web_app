@@ -23,4 +23,4 @@ CMD [ "node", "server.js" ]
 # $ docker build -t <your username>/docker-web-app .
 
 # Run your image
-# $ docker run -p 49160:8080 -d <your username>/docker-web-app
+# $ docker run -p 8080:8080 -d <your username>/docker-web-app
