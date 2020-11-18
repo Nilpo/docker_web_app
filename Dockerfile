@@ -18,3 +18,9 @@ COPY . .
 EXPOSE 8080
 
 CMD [ "node", "server.js" ]
+
+# Now you can build your image from the command line
+# $ docker build -t <your username>/docker-web-app .
+
+# Run your image
+# $ docker run -p 49160:8080 -d <your username>/docker-web-app
