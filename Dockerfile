@@ -1,4 +1,4 @@
-FROM node:15
+FROM node:15-alpine as base
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -8,16 +8,33 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN npm install
+EXPOSE 8080
+
+#RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
 
 # Bundle app source
-COPY . .
+#COPY . .
 
-EXPOSE 8080
+#CMD [ "node", "server.js" ]
 
-CMD [ "node", "server.js" ]
+
+FROM base as production
+
+ENV NODE_ENV=production
+RUN npm ci --only=production
+
+CMD ["node", "server.js"]
+
+
+FROM base as dev
+
+ENV NODE_ENV=development
+RUN npm config set unsafe-perm true && npm install -g nodemon
+RUN npm install
+
+CMD ["npm", "start"]
 
 # Now you can build your image from the command line
 # $ docker build -t <your username>/docker-web-app .

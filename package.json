@@ -5,6 +5,11 @@
   "author": "Rob Dunham <contact@robdunham.info",
   "license": "",
   "main": "server.js",
+  "keywords": [
+    "nodejs",
+    "express",
+    "docker"
+  ],
   "script": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
